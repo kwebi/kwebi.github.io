@@ -165,6 +165,87 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/28/js-this/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://img1.imgtn.bdimg.com/it/u=2619824860,4003980091&fm=26&gp=0.jpg">
+      <meta itemprop="name" content="kwb">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/28/js-this/" class="post-title-link" itemprop="url">JavaScript中闭包和this的一些理解</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-28 13:02:27 / 修改时间：14:26:27" itemprop="dateCreated datePublished" datetime="2020-04-28T13:02:27+08:00">2020-04-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="循环与闭包"><a href="#循环与闭包" class="headerlink" title="循环与闭包"></a>循环与闭包</h3><p>在一次面试中，面试官出了这样一道题，让我说出运行结果</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;=<span class="number">5</span>;i++)&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(i);</span><br><span class="line">    &#125;,i*<span class="number">1000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这段代码在运行时会以每秒一次的频率输出五次 6。</p>
+<p>首先，延迟函数的回调会在循环结束时才执行(具体内容可以了解一下事件循环)。根据作用域的工作原理，它们都被封闭在一个共享的全局作用域中，因此实际上只有一个 <code>i</code>，所有函数共享一个 <code>i</code> 的引用。</p>
+<p>可以按照下面来改进：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;=<span class="number">5</span>; i++) &#123;</span><br><span class="line">	(<span class="function"><span class="keyword">function</span>(<span class="params">j</span>) </span>&#123;</span><br><span class="line">		setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">			<span class="built_in">console</span>.log( j );</span><br><span class="line">		&#125;, j*<span class="number">1000</span> );</span><br><span class="line">	&#125;)( i );</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//打印1到5</span></span><br></pre></td></tr></table></figure>
+
+<p><code>IIFE</code>(立即调用函数表达式)会为每个迭代都生成一个新的作用域，使得延迟函数的回调可以将新的 作用域封闭在每个迭代内部，每个迭代中都会含有一个具有正确值的变量供我们访问。</p>
+<p>如果你知道ES6的<code>let</code>，特点是具有块作用域，<code>for</code>循环的<code>let</code>每次迭代都会用上一次迭代结束的值初始化这个变量，所以还可以这样写：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i=<span class="number">1</span>; i&lt;=<span class="number">5</span>; i++) &#123;</span><br><span class="line">	setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log( i );</span><br><span class="line">	&#125;, i*<span class="number">1000</span> );</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//打印1到5</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="普通匿名函数和箭头函数的this"><a href="#普通匿名函数和箭头函数的this" class="headerlink" title="普通匿名函数和箭头函数的this"></a>普通匿名函数和箭头函数的<code>this</code></h3><p><code>this</code> 对象是在运行时基于函数的执行环境绑定的：在全局函数中，<code>this</code> 等于 <code>window</code>，而当函数被作为某个对象的方法调用时，<code>this</code> 等于那个对象。绑定<code>this</code>指向等问题这里不做讨论。</p>
+<p>在匿名函数中使用 <code>this</code> 对象也可能会导致一些问题。匿名函数的执行环境具有全局性，其<code>this</code> 对象通常指向<code>window</code>，而在严格模式下则是<code>undifined</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"The Window"</span>;</span><br><span class="line"><span class="keyword">var</span> object = &#123;</span><br><span class="line">	name : <span class="string">"My Object"</span>,</span><br><span class="line">	getNameFunc : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">		&#125;;</span><br><span class="line"> 	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">alert(object.getNameFunc()()); <span class="comment">//"The Window"（在非严格模式下）</span></span><br></pre></td></tr></table></figure>
+
+<p>箭头函数的函数体内的<code>this</code>对象，就是定义时所在的对象，而不是使用时所在的对象。箭头函数可以让<code>setTimeout</code>里面的<code>this</code>，绑定定义时所在的作用域</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'id:'</span>, <span class="keyword">this</span>.id);</span><br><span class="line">  &#125;, <span class="number">100</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> id = <span class="number">21</span>;</span><br><span class="line"></span><br><span class="line">foo.call(&#123; <span class="attr">id</span>: <span class="number">42</span> &#125;);</span><br><span class="line"><span class="comment">// id: 42</span></span><br></pre></td></tr></table></figure>
+
+<p>如果是普通函数，执行时<code>this</code>应该指向全局对象<code>window</code>，这时应该输出<code>21</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'id:'</span>, <span class="keyword">this</span>.id);</span><br><span class="line">  &#125;, <span class="number">100</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> id = <span class="number">21</span>;</span><br><span class="line">foo.call(&#123; <span class="attr">id</span>: <span class="number">42</span> &#125;);</span><br><span class="line"><span class="comment">// id: 21</span></span><br></pre></td></tr></table></figure>
+
+<p>箭头函数的<code>this</code>就是外层作用域的<code>this</code>，所以它的<code>this</code>指向是相对固定化的。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/04/1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -670,7 +751,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
