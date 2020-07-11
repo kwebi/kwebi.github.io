@@ -165,6 +165,103 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/11/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://img1.imgtn.bdimg.com/it/u=2619824860,4003980091&fm=26&gp=0.jpg">
+      <meta itemprop="name" content="kwb">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/11/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE/" class="post-title-link" itemprop="url">在服务器上部署项目</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-11 15:17:19 / 修改时间：16:35:17" itemprop="dateCreated datePublished" datetime="2020-07-11T15:17:19+08:00">2020-07-11</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>我购买的是阿里云的学生机，每个月10元，操作系统是CentOS<br>部署的项目是Nodejs和React的前后端分离项目</p>
+<h2 id="首先安装nvm"><a href="#首先安装nvm" class="headerlink" title="首先安装nvm"></a>首先安装nvm</h2><h4 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install git -y</span><br></pre></td></tr></table></figure>
+
+<h4 id="下载nvm"><a href="#下载nvm" class="headerlink" title="下载nvm"></a>下载nvm</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git://github.com/creationix/nvm.git ~/nvm</span><br></pre></td></tr></table></figure>
+
+<h4 id="设置nvm到bash"><a href="#设置nvm到bash" class="headerlink" title="设置nvm到bash"></a>设置nvm到bash</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"source ~/nvm/nvm.sh"</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<h4 id="查询node版本"><a href="#查询node版本" class="headerlink" title="查询node版本"></a>查询node版本</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm list-remote</span><br></pre></td></tr></table></figure>
+<h4 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install v12.0.0</span><br></pre></td></tr></table></figure>
+<h4 id="使用nodejs"><a href="#使用nodejs" class="headerlink" title="使用nodejs"></a>使用nodejs</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm use v12.0.0</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install nginx</span><br></pre></td></tr></table></figure>
+<h4 id="nginx相关操作"><a href="#nginx相关操作" class="headerlink" title="nginx相关操作"></a>nginx相关操作</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nginx -h    <span class="comment">#查看帮助</span></span><br><span class="line">nginx -c filename  <span class="comment">#设置配置文件并启动nginx</span></span><br><span class="line">nginx -t    <span class="comment">#测试配置文件是否正确</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h2><h4 id="下载mysql5-7"><a href="#下载mysql5-7" class="headerlink" title="下载mysql5.7"></a>下载mysql5.7</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<h4 id="进行repo安装"><a href="#进行repo安装" class="headerlink" title="进行repo安装"></a>进行repo安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql57-community-release-el7-9.noarch.rpm</span><br></pre></td></tr></table></figure>
+<h4 id="进入到-etc-yum-repos-d-目录，执行"><a href="#进入到-etc-yum-repos-d-目录，执行" class="headerlink" title="进入到 /etc/yum.repos.d/目录，执行"></a>进入到 /etc/yum.repos.d/目录，执行</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install mysql-server</span><br></pre></td></tr></table></figure>
+
+<h4 id="启动mysql"><a href="#启动mysql" class="headerlink" title="启动mysql"></a>启动mysql</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld</span><br><span class="line">systemctl restart mysqld <span class="comment"># 重启mysql</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="获取临时密码"><a href="#获取临时密码" class="headerlink" title="获取临时密码"></a>获取临时密码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep <span class="string">'temporary password'</span> /var/<span class="built_in">log</span>/mysqld.log</span><br></pre></td></tr></table></figure>
+
+<h4 id="登录mysql，输入刚刚获取到的临时密码"><a href="#登录mysql，输入刚刚获取到的临时密码" class="headerlink" title="登录mysql，输入刚刚获取到的临时密码"></a>登录mysql，输入刚刚获取到的临时密码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+<h4 id="设置密码强度要求"><a href="#设置密码强度要求" class="headerlink" title="设置密码强度要求"></a>设置密码强度要求</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> global validate_password_policy=LOW;</span><br></pre></td></tr></table></figure>
+
+<h4 id="更改密码"><a href="#更改密码" class="headerlink" title="更改密码"></a>更改密码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER <span class="string">'root'</span>@<span class="string">'localhost'</span> IDENTIFIED BY <span class="string">'123456'</span>;<span class="comment">#把123456替换为你自己的密码</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="设置mysql默认编码为utf8"><a href="#设置mysql默认编码为utf8" class="headerlink" title="设置mysql默认编码为utf8"></a>设置mysql默认编码为utf8</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/my.cnf</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在[client]字段里加入default-character-set=utf8 </li>
+<li>在[mysql]字段里加入default-character-set=utf8</li>
+<li>在[mysqld]字段里加入character-set-server=utf8</li>
+</ol>
+<h2 id="安装pm2，并把项目从github上clone下来"><a href="#安装pm2，并把项目从github上clone下来" class="headerlink" title="安装pm2，并把项目从github上clone下来"></a>安装pm2，并把项目从github上clone下来</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g pm2</span><br></pre></td></tr></table></figure>
+<h4 id="pm2-常用命令"><a href="#pm2-常用命令" class="headerlink" title="pm2 常用命令"></a>pm2 常用命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pm2 start app.js --name my-api <span class="comment"># 命名进程</span></span><br><span class="line">pm2 list               <span class="comment"># 显示所有进程状态</span></span><br><span class="line">pm2 logs               <span class="comment">#  显示所有进程日志</span></span><br><span class="line">pm2 stop all           <span class="comment"># 停止所有进程</span></span><br><span class="line">pm2 restart all        <span class="comment"># 重启所有进程</span></span><br><span class="line">pm2 stop 0             <span class="comment"># 停止指定的进程</span></span><br><span class="line">pm2 restart 0          <span class="comment"># 重启指定的进程</span></span><br><span class="line">pm2 delete 0           <span class="comment"># 杀死指定的进程</span></span><br></pre></td></tr></table></figure>
+
+<p>前端使用npm build后，用nginx配置对应文件夹<br>后端使用pm2进行运行</p>
+<p>参考链接：<br><a href="https://blog.csdn.net/wohiusdashi/article/details/89358071" target="_blank" rel="noopener">mysql安装</a><br><a href="https://www.cnblogs.com/roujiamo/p/10824511.html" target="_blank" rel="noopener">mysql编码设置</a><br><a href="https://www.cnblogs.com/i6010/articles/10857543.html" target="_blank" rel="noopener">pm2相关</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/28/js-this/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -348,7 +445,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-30 18:14:58" itemprop="dateModified" datetime="2019-12-30T18:14:58+08:00">2019-12-30</time>
+                <time title="修改时间：2020-07-09 23:50:45" itemprop="dateModified" datetime="2020-07-09T23:50:45+08:00">2020-07-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -380,14 +477,14 @@
 <ol>
 <li>快速幂</li>
 </ol>
-<p>假设<code>p</code>=<code>22</code>，那么<code>p</code>可以用<code>16</code>+<code>4</code>+<code>2</code>表示，即 <code>2^4+2^2+2^1</code> 表示<br><br /><br>上代码(没求模)：</p>
+<p>假设<code>p</code>=<code>22</code>，那么<code>p</code>可以用<code>16</code>+<code>4</code>+<code>2</code>表示，即 $2^4+2^2+2^1$ 表示<br><br /><br>上代码(没求模)：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> ll = <span class="keyword">long</span> <span class="keyword">long</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">pow_mod</span><span class="params">(ll b, ll p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (p &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (p &amp; <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            res = (res * b);<span class="comment">//当前位为1，则乘以b</span></span><br><span class="line">        &#125;</span><br><span class="line">        b = (b * b);<span class="comment">//求下一位的b</span></span><br><span class="line">        p &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ol>
 <li>模运算</li>
 </ol>
-<p><code>(A+B) mod b=(A mod b+B mod b) mod b</code></p>
-<p><code>(A×B) mod b =((A mod b)×(B mod b)) mod b</code></p>
+<p>$$<br>(A+B) \mod b=(A \mod b+B \mod b) \mod b<br>$$</p>
+<p>$$<br>(A×B) \mod b =((A \mod b)×(B \mod b)) \mod b<br>$$</p>
 <p>所以上面那题的可以写出来了</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> ll = <span class="keyword">long</span> <span class="keyword">long</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">pow_mod</span><span class="params">(ll b, ll p, ll k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (p &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (p &amp; <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            res = (res * b) % k;</span><br><span class="line">        &#125;</span><br><span class="line">        b = (b * b) % k;</span><br><span class="line">        p &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res % k;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll b, p, k;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld"</span>, &amp;b, &amp;p, &amp;k);</span><br><span class="line">    ll res = pow_mod(b, p, k);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld^%lld mod %lld=%lld"</span>, b, p, k, res);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -751,7 +848,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -845,6 +942,58 @@
 
 
   
+
+  
+      
+<script type="text/x-mathjax-config">
+    MathJax.Ajax.config.path['mhchem'] = '//cdn.jsdelivr.net/npm/mathjax-mhchem@3';
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        extensions: ['[mhchem]/mhchem.js'],
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
 
   
 
