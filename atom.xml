@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hexo</title>
+  <icon>http://yoursite.com/icon.png</icon>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2020-07-12T05:11:36.559Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>夏目雫</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在服务器上部署项目</title>
+    <link href="http://yoursite.com/2020/07/11/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE/"/>
+    <id>http://yoursite.com/2020/07/11/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE/</id>
+    <published>2020-07-11T07:17:19.000Z</published>
+    <updated>2020-07-12T05:11:36.559Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我购买的是阿里云的学生机，操作系统是CentOS&lt;br&gt;部署的项目是Nodejs和React的前后端分离项目，需要安装配置nodejs，mysql，nginx等&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript中闭包和this的一些理解</title>
+    <link href="http://yoursite.com/2020/04/28/js-this/"/>
+    <id>http://yoursite.com/2020/04/28/js-this/</id>
+    <published>2020-04-28T05:02:27.000Z</published>
+    <updated>2020-07-12T05:11:43.645Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;循环与闭包&quot;&gt;&lt;a href=&quot;#循环与闭包&quot; class=&quot;headerlink&quot; title=&quot;循环与闭包&quot;&gt;&lt;/a&gt;循环与闭包&lt;/h3&gt;&lt;p&gt;在一次面试中，面试官出了这样一道题，让我说出运行结果&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; i=&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;i&amp;lt;=&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;;i++)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    setTimeout(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;=&amp;gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(i);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;,i*&lt;span class=&quot;number&quot;&gt;1000&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="编程语言" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+    
+    
+      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>gym101177I 最长上升子序列</title>
+    <link href="http://yoursite.com/2019/10/04/1/"/>
+    <id>http://yoursite.com/2019/10/04/1/</id>
+    <published>2019-10-04T13:31:35.000Z</published>
+    <updated>2020-07-12T05:10:19.625Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;题目大意是给你一系列区间，区间两两互不相交，但可能会有重复出现，区间的值等于区间的长度，求最大的上升的区间值和。你可以类比最长上升子序列，不过最长上升子序列求的是序列的长度，而这里转化为序列的值。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>快速幂与模运算</title>
+    <link href="http://yoursite.com/2019/05/15/5/"/>
+    <id>http://yoursite.com/2019/05/15/5/</id>
+    <published>2019-05-15T09:21:41.000Z</published>
+    <updated>2020-07-12T05:10:49.745Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://www.luogu.org/problemnew/show/P1226&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;例题&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;输入 &lt;code&gt;b&lt;/code&gt;，&lt;code&gt;p&lt;/code&gt;，&lt;code&gt;k&lt;/code&gt; 的值，求 &lt;code&gt;b&lt;/code&gt;^&lt;code&gt;p&lt;/code&gt; mod &lt;code&gt;k&lt;/code&gt; 的值。其中 &lt;code&gt;b&lt;/code&gt;，&lt;code&gt;p&lt;/code&gt;，&lt;code&gt;k&lt;/code&gt; 为长整型数。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>prim算法</title>
+    <link href="http://yoursite.com/2019/05/04/2/"/>
+    <id>http://yoursite.com/2019/05/04/2/</id>
+    <published>2019-05-04T05:49:31.000Z</published>
+    <updated>2020-07-12T05:10:30.667Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;1-普里姆算法的基本思想&quot;&gt;&lt;a href=&quot;#1-普里姆算法的基本思想&quot; class=&quot;headerlink&quot; title=&quot;(1) 普里姆算法的基本思想&quot;&gt;&lt;/a&gt;(1) 普里姆算法的基本思想&lt;/h3&gt;&lt;p&gt;取图中任意一个顶点 v 作为生成树的根，之后往生成树上添加新的顶点 w。在添加的顶点 w 和已经在生成树上的顶点v 之间必定存在一条边，并且该边的权值在所有连通顶点 v 和 w 之间的边中取值最小。之后继续往生成树上添加顶点，直至生成树上含有 n 个顶点为止。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>右值引用与移动语义</title>
+    <link href="http://yoursite.com/2019/02/24/4/"/>
+    <id>http://yoursite.com/2019/02/24/4/</id>
+    <published>2019-02-24T07:06:34.000Z</published>
+    <updated>2020-07-12T05:10:45.441Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;什么是右值？在C++中，一种被广泛认可的说法是，不能取地址，没有名字的就是右值，通常位于等号右边，相反，位于等号左边的，能取地址，有名字的被称为左值。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="编程语言" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>注册谷歌账号</title>
+    <link href="http://yoursite.com/2018/11/29/6/"/>
+    <id>http://yoursite.com/2018/11/29/6/</id>
+    <published>2018-11-29T08:48:08.000Z</published>
+    <updated>2019-12-30T09:52:06.150Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;如果要访问一些Google服务的话，拥有一个Google账号，将提供很多便利，但介于Google已经退出中国，所以拥有一个Google账户会有一些困难。&lt;/p&gt;
+&lt;p&gt;如果你要访问Google的某些服务的话，你可能需要做一些工作。&lt;/p&gt;
+&lt;p&gt;这里给一个hosts的资源，
+        
+      
+    
+    </summary>
+    
+    
+      <category term="日常" scheme="http://yoursite.com/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+      <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>优先队列的应用 C++实现</title>
+    <link href="http://yoursite.com/2018/10/30/3/"/>
+    <id>http://yoursite.com/2018/10/30/3/</id>
+    <published>2018-10-30T14:53:04.000Z</published>
+    <updated>2020-07-12T05:10:39.572Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;优先队列可以用堆来实现, 堆底层可以用数组表示，&lt;br&gt;通过索引关系，可以表示成一颗二叉完全树&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+  </entry>
+  
+</feed>
