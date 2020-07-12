@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>prim算法</title>
+    <url>/2019/05/04/2/</url>
+    <content><![CDATA[<h3 id="1-普里姆算法的基本思想"><a href="#1-普里姆算法的基本思想" class="headerlink" title="(1) 普里姆算法的基本思想"></a>(1) 普里姆算法的基本思想</h3><p>取图中任意一个顶点 v 作为生成树的根，之后往生成树上添加新的顶点 w。在添加的顶点 w 和已经在生成树上的顶点v 之间必定存在一条边，并且该边的权值在所有连通顶点 v 和 w 之间的边中取值最小。之后继续往生成树上添加顶点，直至生成树上含有 n 个顶点为止。</p>
+<a id="more"></a>
+
+<p>在生成树的构造过程中，图中 n 个顶点分属两个集合：已落在生成树上的顶点集 X 和尚未落在生成树上的顶点集V-X ，则应在所有连通X中顶点和V-X中顶点的边中选取权值最小的边。</p>
+<h3 id="二-代码演示"><a href="#二-代码演示" class="headerlink" title="(二) 代码演示"></a>(二) 代码演示</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = INT_MAX;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_V = <span class="number">105</span>;<span class="comment">//最大顶点数，可以自己改</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> cost[MAX_V][MAX_V]; <span class="comment">//表示u,v之间的权值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> mincost[MAX_V]; <span class="comment">//表示从集合x出发到每个顶点最小权值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> used[MAX_V]; <span class="comment">//表示顶点是否在集合x中</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> V; <span class="comment">//顶点数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">prim</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; V; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        mincost[i] = INF;</span><br><span class="line">        used[i] = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    mincost[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> v = <span class="number">-1</span>;</span><br><span class="line">        <span class="comment">//从不属于集合x的顶点中选取从x到权值最小的顶点</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> u = <span class="number">0</span>; u &lt; V; u++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!used[u] &amp;&amp; (v == <span class="number">-1</span> || mincost[u] &lt; mincost[v]))</span><br><span class="line">                v = u;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (v == <span class="number">-1</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        used[v] = <span class="literal">true</span>;<span class="comment">//把顶点v加入集合x</span></span><br><span class="line">        res += mincost[v];<span class="comment">//把边的长度加到结果</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> u = <span class="number">0</span>; u &lt; V; u++)</span><br><span class="line">        &#123;</span><br><span class="line">            mincost[u] = min(mincost[u], cost[u][v]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+  </entry>
+  <entry>
     <title>gym101177I 最长上升子序列</title>
     <url>/2019/10/04/1/</url>
     <content><![CDATA[<p>题目大意是给你一系列区间，区间两两互不相交，但可能会有重复出现，区间的值等于区间的长度，求最大的上升的区间值和。你可以类比最长上升子序列，不过最长上升子序列求的是序列的长度，而这里转化为序列的值。</p>
@@ -18,18 +32,80 @@
       </categories>
   </entry>
   <entry>
-    <title>prim算法</title>
-    <url>/2019/05/04/2/</url>
-    <content><![CDATA[<h3 id="1-普里姆算法的基本思想"><a href="#1-普里姆算法的基本思想" class="headerlink" title="(1) 普里姆算法的基本思想"></a>(1) 普里姆算法的基本思想</h3><p>取图中任意一个顶点 v 作为生成树的根，之后往生成树上添加新的顶点 w。在添加的顶点 w 和已经在生成树上的顶点v 之间必定存在一条边，并且该边的权值在所有连通顶点 v 和 w 之间的边中取值最小。之后继续往生成树上添加顶点，直至生成树上含有 n 个顶点为止。</p>
+    <title>右值引用与移动语义</title>
+    <url>/2019/02/24/4/</url>
+    <content><![CDATA[<p>什么是右值？在C++中，一种被广泛认可的说法是，不能取地址，没有名字的就是右值，通常位于等号右边，相反，位于等号左边的，能取地址，有名字的被称为左值。</p>
 <a id="more"></a>
 
-<p>在生成树的构造过程中，图中 n 个顶点分属两个集合：已落在生成树上的顶点集 X 和尚未落在生成树上的顶点集V-X ，则应在所有连通X中顶点和V-X中顶点的边中选取权值最小的边。</p>
-<h3 id="二-代码演示"><a href="#二-代码演示" class="headerlink" title="(二) 代码演示"></a>(二) 代码演示</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = INT_MAX;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAX_V = <span class="number">105</span>;<span class="comment">//最大顶点数，可以自己改</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> cost[MAX_V][MAX_V]; <span class="comment">//表示u,v之间的权值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> mincost[MAX_V]; <span class="comment">//表示从集合x出发到每个顶点最小权值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> used[MAX_V]; <span class="comment">//表示顶点是否在集合x中</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> V; <span class="comment">//顶点数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">prim</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; V; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        mincost[i] = INF;</span><br><span class="line">        used[i] = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    mincost[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> v = <span class="number">-1</span>;</span><br><span class="line">        <span class="comment">//从不属于集合x的顶点中选取从x到权值最小的顶点</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> u = <span class="number">0</span>; u &lt; V; u++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (!used[u] &amp;&amp; (v == <span class="number">-1</span> || mincost[u] &lt; mincost[v]))</span><br><span class="line">                v = u;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (v == <span class="number">-1</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        used[v] = <span class="literal">true</span>;<span class="comment">//把顶点v加入集合x</span></span><br><span class="line">        res += mincost[v];<span class="comment">//把边的长度加到结果</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> u = <span class="number">0</span>; u &lt; V; u++)</span><br><span class="line">        &#123;</span><br><span class="line">            mincost[u] = min(mincost[u], cost[u][v]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a &#x3D; b + c</span><br></pre></td></tr></table></figure>
 
+<p>例如上式中，a就是个左值，b+c则是右值。</p>
+<p>C++11又将右值分为纯右值和将亡值。纯右值包括：不跟对象关联的字面值，一些运算表达式(如1+3)。将亡值是跟右值引用相关的表达式，比如右值引用<code>T&amp;&amp;</code>函数的返回值，<code>std::move</code>的返回值。</p>
+<p>右值引用就是对一个右值进行引用的类型。右值引用主要是为了移动语义，而移动语义则需要右值是可以被更改的，这也是为什么不用常量引用。只有绑定右值的引用类型，就能够延长右值的生命期。</p>
+<p><code>std::move</code>的功能是将左值强制转换为右值引用。</p>
+<p>接下来看个例子：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HugeMem</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    HugeMem(<span class="keyword">int</span> size) : sz(size &gt; <span class="number">0</span> ? size : <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        c = <span class="keyword">new</span> <span class="keyword">int</span>[sz];</span><br><span class="line">    &#125;</span><br><span class="line">    ~HugeMem() &#123; <span class="keyword">delete</span>[] c; &#125;</span><br><span class="line">    HugeMem(HugeMem &amp;&amp;h) : sz(h.sz), c(h.c)</span><br><span class="line">    &#123;</span><br><span class="line">        h.c = <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> sz;</span><br><span class="line">    <span class="keyword">int</span> *c;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Moveable</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    Moveable() : i(<span class="keyword">new</span> <span class="keyword">int</span>(<span class="number">3</span>)), h(<span class="number">1024</span>) &#123;&#125;</span><br><span class="line">    ~Moveable() &#123; <span class="keyword">delete</span> i; &#125;</span><br><span class="line">    Moveable(Moveable &amp;&amp;m) : i(m.i), h(move(m.h))</span><br><span class="line">    &#123;</span><br><span class="line">        m.i = <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> *i;</span><br><span class="line">    HugeMem h;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码中，强制将m.h转化为右值，从而实现移动构造。对于一些简单的，不含任何资源的的类型来说，就无需实现移动语义了。有了移动语义，可以实现高性能的置换函数。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">void</span> <span class="title">swap</span>(<span class="title">T</span> &amp;<span class="title">a</span>, <span class="title">T</span> &amp;<span class="title">b</span>)</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="function">T <span class="title">tmp</span><span class="params">(move(a))</span></span>;</span><br><span class="line">    a = move(b);</span><br><span class="line">    b = move(tmp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>编程语言</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>快速幂与模运算</title>
+    <url>/2019/05/15/5/</url>
+    <content><![CDATA[<p><a href="https://www.luogu.org/problemnew/show/P1226" target="_blank" rel="noopener">例题</a>:</p>
+<blockquote>
+<p>输入 <code>b</code>，<code>p</code>，<code>k</code> 的值，求 <code>b</code>^<code>p</code> mod <code>k</code> 的值。其中 <code>b</code>，<code>p</code>，<code>k</code> 为长整型数。</p>
+</blockquote>
+<a id="more"></a>
+
+<ol>
+<li>快速幂</li>
+</ol>
+<p>假设<code>p</code>=<code>22</code>，那么<code>p</code>可以用<code>16</code>+<code>4</code>+<code>2</code>表示，即 $2^4+2^2+2^1$ 表示<br><br /><br>上代码(没求模)：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> ll = <span class="keyword">long</span> <span class="keyword">long</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">pow_mod</span><span class="params">(ll b, ll p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (p &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (p &amp; <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            res = (res * b);<span class="comment">//当前位为1，则乘以b</span></span><br><span class="line">        &#125;</span><br><span class="line">        b = (b * b);<span class="comment">//求下一位的b</span></span><br><span class="line">        p &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>模运算</li>
+</ol>
+<p>$$<br>(A+B) \mod b=(A \mod b+B \mod b) \mod b<br>$$</p>
+<p>$$<br>(A×B) \mod b =((A \mod b)×(B \mod b)) \mod b<br>$$</p>
+<p>所以上面那题的可以写出来了</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> ll = <span class="keyword">long</span> <span class="keyword">long</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">pow_mod</span><span class="params">(ll b, ll p, ll k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (p &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (p &amp; <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            res = (res * b) % k;</span><br><span class="line">        &#125;</span><br><span class="line">        b = (b * b) % k;</span><br><span class="line">        p &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res % k;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll b, p, k;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld"</span>, &amp;b, &amp;p, &amp;k);</span><br><span class="line">    ll res = pow_mod(b, p, k);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld^%lld mod %lld=%lld"</span>, b, p, k, res);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>算法</category>
       </categories>
+  </entry>
+  <entry>
+    <title>注册谷歌账号</title>
+    <url>/2018/11/29/6/</url>
+    <content><![CDATA[<p>如果要访问一些Google服务的话，拥有一个Google账号，将提供很多便利，但介于Google已经退出中国，所以拥有一个Google账户会有一些困难。</p>
+<p>如果你要访问Google的某些服务的话，你可能需要做一些工作。</p>
+<p>这里给一个hosts的资源，对应的去改就行。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;googlehosts&#x2F;hosts</span><br></pre></td></tr></table></figure>
+
+<p>接下来就是注册Google账号了，但是注册Google账号需要验证手机号，即使现在不验证，过一段时间以后也会要你验证的，不验证就不能使用。</p>
+<p>手机QQ邮箱可以登录Google邮箱，也可以注册，不过注册到一半手机号无法验证，所以，手机QQ邮箱主要还是用来登陆。</p>
+<p>前面讲的改hosts的步骤也主要是面向电脑端。</p>
+<p>用电脑打开<code>IE浏览器</code>，注意不要用其他的，因为验证手机号时会出现问题。</p>
+<p>然后输入:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mail.google.com</span><br></pre></td></tr></table></figure>
+
+<p>接下来，更改左下角的语言，改为<code>中文(香港)</code>，接下来正常填写表格就能注册好了。</p>
+<p>注册好后，用手机QQ邮箱登陆时也务必注意将语言改为<code>中文(香港)</code>，这样就没问题了。</p>
+]]></content>
+      <categories>
+        <category>日常</category>
+      </categories>
+      <tags>
+        <tag>学习</tag>
+      </tags>
   </entry>
   <entry>
     <title>优先队列的应用 C++实现</title>
@@ -82,33 +158,6 @@
       </tags>
   </entry>
   <entry>
-    <title>快速幂与模运算</title>
-    <url>/2019/05/15/5/</url>
-    <content><![CDATA[<p><a href="https://www.luogu.org/problemnew/show/P1226" target="_blank" rel="noopener">例题</a>:</p>
-<blockquote>
-<p>输入 <code>b</code>，<code>p</code>，<code>k</code> 的值，求 <code>b</code>^<code>p</code> mod <code>k</code> 的值。其中 <code>b</code>，<code>p</code>，<code>k</code> 为长整型数。</p>
-</blockquote>
-<a id="more"></a>
-
-<ol>
-<li>快速幂</li>
-</ol>
-<p>假设<code>p</code>=<code>22</code>，那么<code>p</code>可以用<code>16</code>+<code>4</code>+<code>2</code>表示，即 $2^4+2^2+2^1$ 表示<br><br /><br>上代码(没求模)：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> ll = <span class="keyword">long</span> <span class="keyword">long</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">pow_mod</span><span class="params">(ll b, ll p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (p &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (p &amp; <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            res = (res * b);<span class="comment">//当前位为1，则乘以b</span></span><br><span class="line">        &#125;</span><br><span class="line">        b = (b * b);<span class="comment">//求下一位的b</span></span><br><span class="line">        p &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>模运算</li>
-</ol>
-<p>$$<br>(A+B) \mod b=(A \mod b+B \mod b) \mod b<br>$$</p>
-<p>$$<br>(A×B) \mod b =((A \mod b)×(B \mod b)) \mod b<br>$$</p>
-<p>所以上面那题的可以写出来了</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> ll = <span class="keyword">long</span> <span class="keyword">long</span>;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">pow_mod</span><span class="params">(ll b, ll p, ll k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (p &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (p &amp; <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            res = (res * b) % k;</span><br><span class="line">        &#125;</span><br><span class="line">        b = (b * b) % k;</span><br><span class="line">        p &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res % k;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll b, p, k;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld"</span>, &amp;b, &amp;p, &amp;k);</span><br><span class="line">    ll res = pow_mod(b, p, k);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld^%lld mod %lld=%lld"</span>, b, p, k, res);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-  </entry>
-  <entry>
     <title>JavaScript中闭包和this的一些理解</title>
     <url>/2020/04/28/js-this/</url>
     <content><![CDATA[<h3 id="循环与闭包"><a href="#循环与闭包" class="headerlink" title="循环与闭包"></a>循环与闭包</h3><p>在一次面试中，面试官出了这样一道题，让我说出运行结果</p>
@@ -141,55 +190,6 @@
       </categories>
       <tags>
         <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>注册谷歌账号</title>
-    <url>/2018/11/29/6/</url>
-    <content><![CDATA[<p>如果要访问一些Google服务的话，拥有一个Google账号，将提供很多便利，但介于Google已经退出中国，所以拥有一个Google账户会有一些困难。</p>
-<p>如果你要访问Google的某些服务的话，你可能需要做一些工作。</p>
-<p>这里给一个hosts的资源，对应的去改就行。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;googlehosts&#x2F;hosts</span><br></pre></td></tr></table></figure>
-
-<p>接下来就是注册Google账号了，但是注册Google账号需要验证手机号，即使现在不验证，过一段时间以后也会要你验证的，不验证就不能使用。</p>
-<p>手机QQ邮箱可以登录Google邮箱，也可以注册，不过注册到一半手机号无法验证，所以，手机QQ邮箱主要还是用来登陆。</p>
-<p>前面讲的改hosts的步骤也主要是面向电脑端。</p>
-<p>用电脑打开<code>IE浏览器</code>，注意不要用其他的，因为验证手机号时会出现问题。</p>
-<p>然后输入:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mail.google.com</span><br></pre></td></tr></table></figure>
-
-<p>接下来，更改左下角的语言，改为<code>中文(香港)</code>，接下来正常填写表格就能注册好了。</p>
-<p>注册好后，用手机QQ邮箱登陆时也务必注意将语言改为<code>中文(香港)</code>，这样就没问题了。</p>
-]]></content>
-      <categories>
-        <category>日常</category>
-      </categories>
-      <tags>
-        <tag>学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>右值引用与移动语义</title>
-    <url>/2019/02/24/4/</url>
-    <content><![CDATA[<p>什么是右值？在C++中，一种被广泛认可的说法是，不能取地址，没有名字的就是右值，通常位于等号右边，相反，位于等号左边的，能取地址，有名字的被称为左值。</p>
-<a id="more"></a>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a &#x3D; b + c</span><br></pre></td></tr></table></figure>
-
-<p>例如上式中，a就是个左值，b+c则是右值。</p>
-<p>C++11又将右值分为纯右值和将亡值。纯右值包括：不跟对象关联的字面值，一些运算表达式(如1+3)。将亡值是跟右值引用相关的表达式，比如右值引用<code>T&amp;&amp;</code>函数的返回值，<code>std::move</code>的返回值。</p>
-<p>右值引用就是对一个右值进行引用的类型。右值引用主要是为了移动语义，而移动语义则需要右值是可以被更改的，这也是为什么不用常量引用。只有绑定右值的引用类型，就能够延长右值的生命期。</p>
-<p><code>std::move</code>的功能是将左值强制转换为右值引用。</p>
-<p>接下来看个例子：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HugeMem</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    HugeMem(<span class="keyword">int</span> size) : sz(size &gt; <span class="number">0</span> ? size : <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        c = <span class="keyword">new</span> <span class="keyword">int</span>[sz];</span><br><span class="line">    &#125;</span><br><span class="line">    ~HugeMem() &#123; <span class="keyword">delete</span>[] c; &#125;</span><br><span class="line">    HugeMem(HugeMem &amp;&amp;h) : sz(h.sz), c(h.c)</span><br><span class="line">    &#123;</span><br><span class="line">        h.c = <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> sz;</span><br><span class="line">    <span class="keyword">int</span> *c;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Moveable</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    Moveable() : i(<span class="keyword">new</span> <span class="keyword">int</span>(<span class="number">3</span>)), h(<span class="number">1024</span>) &#123;&#125;</span><br><span class="line">    ~Moveable() &#123; <span class="keyword">delete</span> i; &#125;</span><br><span class="line">    Moveable(Moveable &amp;&amp;m) : i(m.i), h(move(m.h))</span><br><span class="line">    &#123;</span><br><span class="line">        m.i = <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> *i;</span><br><span class="line">    HugeMem h;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>上述代码中，强制将m.h转化为右值，从而实现移动构造。对于一些简单的，不含任何资源的的类型来说，就无需实现移动语义了。有了移动语义，可以实现高性能的置换函数。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">void</span> <span class="title">swap</span>(<span class="title">T</span> &amp;<span class="title">a</span>, <span class="title">T</span> &amp;<span class="title">b</span>)</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="function">T <span class="title">tmp</span><span class="params">(move(a))</span></span>;</span><br><span class="line">    a = move(b);</span><br><span class="line">    b = move(tmp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>编程语言</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
       </tags>
   </entry>
   <entry>
