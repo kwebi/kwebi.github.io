@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-07-12T05:11:36.559Z</updated>
+  <updated>2022-04-27T11:46:19.232Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,15 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Doom Emacs初步使用</title>
+    <link href="http://yoursite.com/2022/04/27/Doom-Emacs%E5%88%9D%E6%AD%A5%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yoursite.com/2022/04/27/Doom-Emacs%E5%88%9D%E6%AD%A5%E4%BD%BF%E7%94%A8/</id>
+    <published>2022-04-27T10:30:57.000Z</published>
+    <updated>2022-04-27T11:46:19.232Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;几年前稍微玩过&lt;code&gt;Emacs&lt;/code&gt;,但没有深入，虽然现在也不算精通，不过起码还能融入日常使用，也算入门吧。&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="Emacs" scheme="http://yoursite.com/tags/Emacs/"/>
+    
+  </entry>
+  
+  <entry>
     <title>在服务器上部署项目</title>
     <link href="http://yoursite.com/2020/07/11/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE/"/>
     <id>http://yoursite.com/2020/07/11/%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE/</id>
     <published>2020-07-11T07:17:19.000Z</published>
-    <updated>2020-07-12T05:11:36.559Z</updated>
+    <updated>2020-07-12T06:54:22.918Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;我购买的是阿里云的学生机，操作系统是CentOS&lt;br&gt;部署的项目是Nodejs和React的前后端分离项目，需要安装配置nodejs，mysql，nginx等&lt;/p&gt;
+      &lt;p&gt;我购买的是阿里云的学生机，操作系统是CentOS&lt;br&gt;部署的项目是Nodejs和React的前后端分离项目，需要安装配置nodejs，mysql，nginx等&lt;br&gt;&lt;img src=&quot;https://wx2.sbimg.cn/2020/07/08/C9tBJ.jpg&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -62,11 +81,11 @@
     <link href="http://yoursite.com/2019/10/04/1/"/>
     <id>http://yoursite.com/2019/10/04/1/</id>
     <published>2019-10-04T13:31:35.000Z</published>
-    <updated>2020-07-12T05:10:19.625Z</updated>
+    <updated>2020-07-12T06:50:49.188Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;题目大意是给你一系列区间，区间两两互不相交，但可能会有重复出现，区间的值等于区间的长度，求最大的上升的区间值和。你可以类比最长上升子序列，不过最长上升子序列求的是序列的长度，而这里转化为序列的值。&lt;/p&gt;
+      &lt;p&gt;题目大意是给你一系列区间，区间两两互不相交，但可能会有重复出现，区间的值等于区间的长度，求最大的上升的区间值和。你可以类比最长上升子序列，不过最长上升子序列求的是序列的长度，而这里转化为序列的值。&lt;br&gt;&lt;img src=&quot;https://wx1.sbimg.cn/2020/07/09/CASJY.jpg&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -81,13 +100,13 @@
     <link href="http://yoursite.com/2019/05/15/5/"/>
     <id>http://yoursite.com/2019/05/15/5/</id>
     <published>2019-05-15T09:21:41.000Z</published>
-    <updated>2020-07-12T05:10:49.745Z</updated>
+    <updated>2020-07-12T06:53:16.343Z</updated>
     
     <summary type="html">
     
       &lt;p&gt;&lt;a href=&quot;https://www.luogu.org/problemnew/show/P1226&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;例题&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;输入 &lt;code&gt;b&lt;/code&gt;，&lt;code&gt;p&lt;/code&gt;，&lt;code&gt;k&lt;/code&gt; 的值，求 &lt;code&gt;b&lt;/code&gt;^&lt;code&gt;p&lt;/code&gt; mod &lt;code&gt;k&lt;/code&gt; 的值。其中 &lt;code&gt;b&lt;/code&gt;，&lt;code&gt;p&lt;/code&gt;，&lt;code&gt;k&lt;/code&gt; 为长整型数。&lt;/p&gt;
+&lt;p&gt;输入 &lt;code&gt;b&lt;/code&gt;，&lt;code&gt;p&lt;/code&gt;，&lt;code&gt;k&lt;/code&gt; 的值，求 &lt;code&gt;b&lt;/code&gt;^&lt;code&gt;p&lt;/code&gt; mod &lt;code&gt;k&lt;/code&gt; 的值。其中 &lt;code&gt;b&lt;/code&gt;，&lt;code&gt;p&lt;/code&gt;，&lt;code&gt;k&lt;/code&gt; 为长整型数。&lt;br&gt;&lt;img src=&quot;https://wx2.sbimg.cn/2020/07/09/CBMtD.jpg&quot;&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
     
     </summary>
@@ -103,11 +122,11 @@
     <link href="http://yoursite.com/2019/05/04/2/"/>
     <id>http://yoursite.com/2019/05/04/2/</id>
     <published>2019-05-04T05:49:31.000Z</published>
-    <updated>2020-07-12T05:10:30.667Z</updated>
+    <updated>2020-07-12T06:51:37.856Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;1-普里姆算法的基本思想&quot;&gt;&lt;a href=&quot;#1-普里姆算法的基本思想&quot; class=&quot;headerlink&quot; title=&quot;(1) 普里姆算法的基本思想&quot;&gt;&lt;/a&gt;(1) 普里姆算法的基本思想&lt;/h3&gt;&lt;p&gt;取图中任意一个顶点 v 作为生成树的根，之后往生成树上添加新的顶点 w。在添加的顶点 w 和已经在生成树上的顶点v 之间必定存在一条边，并且该边的权值在所有连通顶点 v 和 w 之间的边中取值最小。之后继续往生成树上添加顶点，直至生成树上含有 n 个顶点为止。&lt;/p&gt;
+      &lt;h3 id=&quot;1-普里姆算法的基本思想&quot;&gt;&lt;a href=&quot;#1-普里姆算法的基本思想&quot; class=&quot;headerlink&quot; title=&quot;(1) 普里姆算法的基本思想&quot;&gt;&lt;/a&gt;(1) 普里姆算法的基本思想&lt;/h3&gt;&lt;p&gt;取图中任意一个顶点 v 作为生成树的根，之后往生成树上添加新的顶点 w。在添加的顶点 w 和已经在生成树上的顶点v 之间必定存在一条边，并且该边的权值在所有连通顶点 v 和 w 之间的边中取值最小。之后继续往生成树上添加顶点，直至生成树上含有 n 个顶点为止。&lt;br&gt;&lt;img src=&quot;https://wx2.sbimg.cn/2020/07/09/CATiA.jpg&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -122,11 +141,11 @@
     <link href="http://yoursite.com/2019/02/24/4/"/>
     <id>http://yoursite.com/2019/02/24/4/</id>
     <published>2019-02-24T07:06:34.000Z</published>
-    <updated>2020-07-12T05:10:45.441Z</updated>
+    <updated>2020-07-12T06:52:51.562Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;什么是右值？在C++中，一种被广泛认可的说法是，不能取地址，没有名字的就是右值，通常位于等号右边，相反，位于等号左边的，能取地址，有名字的被称为左值。&lt;/p&gt;
+      &lt;p&gt;什么是右值？在C++中，一种被广泛认可的说法是，不能取地址，没有名字的就是右值，通常位于等号右边，相反，位于等号左边的，能取地址，有名字的被称为左值。&lt;br&gt;&lt;img src=&quot;https://wx1.sbimg.cn/2020/07/09/CAIW6.jpg&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -143,19 +162,11 @@
     <link href="http://yoursite.com/2018/11/29/6/"/>
     <id>http://yoursite.com/2018/11/29/6/</id>
     <published>2018-11-29T08:48:08.000Z</published>
-    <updated>2019-12-30T09:52:06.150Z</updated>
+    <updated>2020-07-12T06:53:59.009Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;如果要访问一些Google服务的话，拥有一个Google账号，将提供很多便利，但介于Google已经退出中国，所以拥有一个Google账户会有一些困难。&lt;/p&gt;
-&lt;p&gt;如果你要访问Google的某些服务的话，你可能需要做一些工作。&lt;/p&gt;
-&lt;p&gt;这里给一个hosts的资源，
-        
-      
+      &lt;p&gt;如果要访问一些Google服务的话，拥有一个Google账号，将提供很多便利，但介于Google已经退出中国，所以拥有一个Google账户会有一些困难。&lt;br&gt;&lt;img src=&quot;https://wx1.sbimg.cn/2020/07/08/C9cHK.png&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -172,11 +183,11 @@
     <link href="http://yoursite.com/2018/10/30/3/"/>
     <id>http://yoursite.com/2018/10/30/3/</id>
     <published>2018-10-30T14:53:04.000Z</published>
-    <updated>2020-07-12T05:10:39.572Z</updated>
+    <updated>2020-07-12T06:52:25.875Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;优先队列可以用堆来实现, 堆底层可以用数组表示，&lt;br&gt;通过索引关系，可以表示成一颗二叉完全树&lt;/p&gt;
+      &lt;p&gt;优先队列可以用堆来实现, 堆底层可以用数组表示，&lt;br&gt;通过索引关系，可以表示成一颗二叉完全树&lt;br&gt;&lt;img src=&quot;https://wx1.sbimg.cn/2020/07/09/CAV5V.jpg&quot;&gt;&lt;/p&gt;
     
     </summary>
     
