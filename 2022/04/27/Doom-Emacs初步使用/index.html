@@ -54,7 +54,7 @@
 <meta property="og:description" content="几年前稍微玩过Emacs,但没有深入，虽然现在也不算精通，不过起码还能融入日常使用，也算入门吧。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-27T10:30:57.000Z">
-<meta property="article:modified_time" content="2022-04-27T11:46:19.232Z">
+<meta property="article:modified_time" content="2022-04-29T16:37:20.944Z">
 <meta property="article:author" content="夏目雫">
 <meta property="article:tag" content="Emacs">
 <meta name="twitter:card" content="summary">
@@ -228,10 +228,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-04-27 18:30:57 / 修改时间：19:46:19" itemprop="dateCreated datePublished" datetime="2022-04-27T18:30:57+08:00">2022-04-27</time>
+              <time title="创建时间：2022-04-27 18:30:57" itemprop="dateCreated datePublished" datetime="2022-04-27T18:30:57+08:00">2022-04-27</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-30 00:37:20" itemprop="dateModified" datetime="2022-04-30T00:37:20+08:00">2022-04-30</time>
+              </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -267,6 +273,9 @@
 <p>对代理软件要允许它访问局域网。然后在WSL的终端的~目录下中</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.proxyrc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入如下内容后，键入Esc 和 : x保存</span></span><br><span class="line"><span class="comment"># 7890换成自己的代理软件端口</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">host_ip=$(cat /etc/resolv.conf |grep <span class="string">"nameserver"</span> |cut -f 2 -d <span class="string">" "</span>)</span><br><span class="line"><span class="built_in">export</span> ALL_PROXY=<span class="string">"http://<span class="variable">$host_ip</span>:7890"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 退出后在终端输入</span></span><br><span class="line"><span class="built_in">source</span> .proxyrc</span><br></pre></td></tr></table></figure>
 
+<p>当然也可以选择安装proxychains</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install proxychains</span><br><span class="line"></span><br><span class="line">sudo nano /etc/proxychains.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 改为如下，ip和端口改为windows上的ip和代理的端口</span></span><br><span class="line">socks5  127.0.0.1 8888</span><br><span class="line"></span><br><span class="line"><span class="comment"># 要运行时，在前面假释proxychains即可，如：</span></span><br><span class="line">proxychains curl -i google.com</span><br></pre></td></tr></table></figure>
+
 <p>然后就可以快速克隆 Doom Emacs的仓库了</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d</span><br><span class="line"></span><br><span class="line">~/.emacs.d/bin/doom install</span><br></pre></td></tr></table></figure>
 <h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>执行完毕后即可键入<code>emacs</code>打开了，下面介绍一些基本操作，如果你会简单的Vim操作那么更简单，因为Doom Emacs天然支持Vim操作，按Ctr+Z可以进行切换</p>
@@ -292,7 +301,7 @@
 <td align="center">文件操作</td>
 </tr>
 <tr>
-<td>Spc+.</td>
+<td>Spc+:</td>
 <td align="center">等同于M+x,可输入指令</td>
 </tr>
 <tr>
@@ -317,6 +326,7 @@
 </tr>
 </tbody></table>
 <p>这些只要你键入前两个，后面的选项会提示,相当方便。<br>vim相关操作不需要太多，懂等i,esc,v等相关操作和对应的模式即可。<br>以上，一个高配版vim就完成了</p>
+<h2 id="开启编程语言插件"><a href="#开启编程语言插件" class="headerlink" title="开启编程语言插件"></a>开启编程语言插件</h2><p>进入<code>~/.doom.d/init.el</code> 把<code>lsp</code> 前面的注释去掉，并把下方对应的语言开启<br>以上即可进行快乐的玩耍使用了。</p>
 
     </div>
 
@@ -418,7 +428,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先安装"><span class="nav-number">1.</span> <span class="nav-text">首先安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代理"><span class="nav-number">2.</span> <span class="nav-text">代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快捷键"><span class="nav-number">3.</span> <span class="nav-text">快捷键</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先安装"><span class="nav-number">1.</span> <span class="nav-text">首先安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代理"><span class="nav-number">2.</span> <span class="nav-text">代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快捷键"><span class="nav-number">3.</span> <span class="nav-text">快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启编程语言插件"><span class="nav-number">4.</span> <span class="nav-text">开启编程语言插件</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
